@@ -2,6 +2,7 @@ package com.djmakes.rickandmorty
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -24,10 +25,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.card_charactor)
 
         val nameText = findViewById<TextView>(R.id.nameTextView)
-        val headerText = findViewById<AppCompatImageView>(R.id.headerImageView)
+        val headerImage = findViewById<AppCompatImageView>(R.id.headerImageView)
         val aliveText = findViewById<TextView>(R.id.statusTextView)
         val originText = findViewById<TextView>(R.id.originTextView)
         val speciesText = findViewById<TextView>(R.id.speciesTextView)
+        val genderImageView = findViewById<ImageView>(R.id.genderImageView)
 
 
         val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
@@ -52,9 +54,19 @@ class MainActivity : AppCompatActivity() {
                     return
                 }
                 val body = response.body()!!
-                val name = body.name
+                nameText.text = body.name
+                aliveText.text = body.status
+                speciesText.text = body.species
+                originText.text = body.origin.name
 
-                nameText.text = name
+                if(body.gender.equals("male", true)){
+                    genderImageView.setImageResource(R.drawable.ic_baseline_male_24)
+                } else{
+                    genderImageView.setImageResource(R.drawable.ic_baseline_female_24)
+                }
+
+          //   Picasso.get().load(body.image).into(headerImage);
+
             }
 
             override fun onFailure(call: Call<CharacterById>, t: Throwable) {

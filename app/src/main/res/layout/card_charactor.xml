@@ -1,20 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/headerImageView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="16:9"
-        tools:src="@tools:sample/backgrounds/scenic[7]"
-        android:scaleType="centerCrop"
-        app:layout_constraintTop_toTopOf="parent"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/statusTextView">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/headerImageView"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            tools:src="@tools:sample/backgrounds/scenic[7]"
+            android:scaleType="centerCrop" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/nameTextView"
@@ -28,7 +40,7 @@
         app:layout_constraintEnd_toStartOf="@+id/genderImageView"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerImageView"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Full Name" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -41,16 +53,6 @@
         app:layout_constraintTop_toBottomOf="@+id/nameTextView"
         tools:text="Alive" />
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="12dp"
-        android:background= "?colorPrimary"
-        app:layout_constraintStart_toStartOf="@+id/statusTextView"
-        app:layout_constraintEnd_toEndOf="@+id/genderImageView"
-        app:layout_constraintTop_toBottomOf="@+id/statusTextView"
-        />
 
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -73,7 +75,7 @@
         android:textSize = "28sp"
         app:layout_constraintStart_toStartOf="@+id/nameTextView"
         app:layout_constraintEnd_toStartOf="@+id/genderImageView"
-        app:layout_constraintTop_toBottomOf="@+id/divider"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
         android:text="Origin"
         android:textStyle= "italic"/>
 

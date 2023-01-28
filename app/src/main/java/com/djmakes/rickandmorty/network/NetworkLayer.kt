@@ -18,6 +18,4 @@ object NetworkLayer {
     }
 
     val apiClient = ApiClient(rickAndMortyService)
-
-
 }

@@ -1,9 +1,15 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+   id 'kotlin-kapt'
 }
 
-apply plugin: 'kotlin-kapt'
+//apply plugin: 'kotlin-kapt'
+
+//Epoxy
+kapt {
+    correctErrorTypes = true
+}
 
 android {
     compileSdk 33
@@ -85,5 +91,10 @@ dependencies {
     // Picasso
     implementation 'com.squareup.picasso:picasso:2.8'
 
+    //Epoxy
+    def epoxyVersion= "5.1.1"
+    implementation "com.airbnb.android:epoxy:$epoxyVersion"
+   kapt ("com.airbnb.android:epoxy-processor:$epoxyVersion")
+ // annotationProcessor "com.airbnb.android:epoxy-processor:$epoxyVersion"
 
 }
